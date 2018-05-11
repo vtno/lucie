@@ -27,11 +27,29 @@ const request = {
   session: sessionPath,
   queryInput: {
     text: {
-      text: 'DEEZNUT GADDEE',
+      text: 'DEEZNUT GADDEEMM',
       languageCode: languageCode,
     },
   },
 };
+
+// Send request and log result
+sessionClient
+  .detectIntent(request)
+  .then(responses => {
+    console.log('Detected intent');
+    const result = responses[0].queryResult;
+    console.log(`  Query: ${result.queryText}`);
+    console.log(`  Response: ${result.fulfillmentText}`);
+    if (result.intent) {
+      console.log(`  Intent: ${result.intent.displayName}`);
+    } else {
+      console.log(`  No intent matched.`);
+    }
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
