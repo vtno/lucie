@@ -11,19 +11,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // dialog
 const projectId = 'lucie-30cd4'; //https://dialogflow.com/docs/agents#settings
-const sessionId = 'quickstart-session-id';
+const sessionId = 'deezsessionnuts';
 const query = 'hello';
 const languageCode = 'en-US';
 
 const dialogflow = require('dialogflow');
+
 const sessionClient = new dialogflow.SessionsClient();
+
+// Define session path
+const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
 // The text query request.
 const request = {
   session: sessionPath,
   queryInput: {
     text: {
-      text: query,
+      text: 'DEEZNUT GADDEE',
       languageCode: languageCode,
     },
   },
@@ -42,7 +46,7 @@ var exists = fs.existsSync(dbFile);
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database(dbFile);
 
-var dbName = 'Lucy';
+var dbName = 'Lucie';
 
 // if ./.data/sqlite.db does not exist, create it, otherwise print records to console
 db.serialize(function(){
