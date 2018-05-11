@@ -3,10 +3,13 @@
 
 // init project
 var express = require('express');
+const { WebhookClient } = require('dialogflow-fulfillment');
 var bodyParser = require('body-parser');
-var axios = require('axios');
 var app = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const agent = new WebhookClient({request: request, response: response});
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -21,20 +24,22 @@ var exists = fs.existsSync(dbFile);
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database(dbFile);
 
+var dbName = 'Lucy';
+
 // if ./.data/sqlite.db does not exist, create it, otherwise print records to console
 db.serialize(function(){
   if (!exists) {
-    db.run('CREATE TABLE Dreams (dream TEXT)');
-    console.log('New table Dreams created!');
+    db.run(`CREATE TABLE ${dbName} (dream TEXT)`);
+    console.log(`New table ${dbName} created!`);
     
     // insert default dreams
     db.serialize(function() {
-      db.run('INSERT INTO Dreams (dream) VALUES ("Find and count some sheep"), ("Climb a really tall mountain"), ("Wash the dishes")');
+      db.run(`INSERT INTO ${dbName} (dream) VALUES ("Find and count some sheep"), ("Climb a really tall mountain"), ("Wash the dishes")`);
     });
   }
   else {
-    console.log('Database "Dreams" ready to go!');
-    db.each('SELECT * from Dreams', function(err, row) {
+    console.log(`Database "${dbName}" ready to go!`);
+    db.each(`SELECT * from "${dbName}"`, function(err, row) {
       if ( row ) {
         console.log('record:', row);
       }

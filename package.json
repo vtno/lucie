@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "sqlite3": "^4.0.0",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "dialogflow": "^4.0.3"
   },
   "engines": {
     "node": "8.x"

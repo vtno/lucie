@@ -1,5 +1,6 @@
 dependencies:
   axios: 0.18.0
+  dialogflow: 4.0.3
   express: 4.16.3
   sqlite3: 4.0.0
 packages:
@@ -96,6 +97,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
+  /dialogflow/4.0.3:
+    dev: false
+    resolution:
+      integrity: sha1-2Fp8a6pQIgxnSU2Z9ukKhWbTGFY=
   /ee-first/1.1.1:
     dev: false
     resolution:
@@ -406,5 +411,6 @@ shrinkwrapMinorVersion: 5
 shrinkwrapVersion: 3
 specifiers:
   axios: ^0.18.0
+  dialogflow: ^4.0.3
   express: ^4.16.3
   sqlite3: ^4.0.0
