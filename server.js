@@ -8,10 +8,26 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+// dialog
 const projectId = 'lucie-30cd4'; //https://dialogflow.com/docs/agents#settings
 const sessionId = 'quickstart-session-id';
 const query = 'hello';
 const languageCode = 'en-US';
+
+const dialogflow = require('dialogflow');
+const sessionClient = new dialogflow.SessionsClient();
+
+// The text query request.
+const request = {
+  session: sessionPath,
+  queryInput: {
+    text: {
+      text: query,
+      languageCode: languageCode,
+    },
+  },
+};
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
