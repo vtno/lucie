@@ -3,13 +3,15 @@
 
 // init project
 var express = require('express');
-const { WebhookClient } = require('dialogflow-fulfillment');
 var bodyParser = require('body-parser');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const agent = new WebhookClient({request: request, response: response});
+const projectId = 'lucie-30cd4'; //https://dialogflow.com/docs/agents#settings
+const sessionId = 'quickstart-session-id';
+const query = 'hello';
+const languageCode = 'en-US';
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
